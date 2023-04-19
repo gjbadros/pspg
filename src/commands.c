@@ -582,6 +582,51 @@ translate_event(int c, bool alt, Options *opts, int *nested_command)
 			case KEY_SPREVIOUS:
 				*nested_command = cmd_PageUp;
 				return cmd_Mark_NestedCursorCommand;
+
+// shift
+
+			case 'B':
+				return cmd_BoldLabelsToggle;
+			case 'C':
+				return cmd_ShowCursor;
+			case 'A':
+				return cmd_GotoLine;
+			case 'Z':
+				return cmd_MouseToggle;
+			case 'X':
+				return cmd_RowNumToggle;
+			case 'O':
+				return cmd_FlushBookmarks;
+			case 'K':
+				return cmd_ToggleBookmark;
+			case 'I':
+				return cmd_PrevBookmark;
+			case 'J':
+				return cmd_NextBookmark;
+			case 'Q':
+				return cmd_RawOutputQuit;
+			case 'V':
+				return cmd_ShowVerticalCursor;
+			case '@':
+				return cmd_SaveData;
+			case '#':
+				if (opts->quit_on_f3)
+					return cmd_Quit;
+				else
+					return cmd_Mark;
+				break;
+			case '&':
+				return cmd_ForwardSearch;
+			case '(':
+				return cmd_ShowMenu;
+			case PSPG_ESC_CODE:
+				return cmd_Escape;
+			case ')':
+				return cmd_Quit;
+			case '>':
+				return cmd_ForwardSearchInSelection;
+			case '<':
+				return cmd_BackwardSearchInSelection;
 		}
 	}
 
